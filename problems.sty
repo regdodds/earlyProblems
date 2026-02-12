@@ -1,0 +1,23 @@
+\newcommand{\startproblem}[1]{\begin{problem}{\bfseries\emph{#1}\\}}
+\newcommand{\problemend}{\end{problem}}
+\newcommand{\startsolution}[1]{\begin{solution}{\bfseries{#1}\\}}
+\newcommand{\solutionend}{\mbox{\ }\hfill\hfill--------- $\square$\end{solution}}
+\newtheorem{problem}{Problem}[chapter]
+\newtheorem{exercise}[problem]{Exercise}
+\newtheorem{hint}[problem]{Hint}
+\newtheorem{explanation}[problem]{Explanation}
+
+\newenvironment{solution}[1][Solution---]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+

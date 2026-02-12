@@ -1,0 +1,221 @@
+\documentclass[a4paper,12pt]{scrreport}  % Report
+%\documentclass[a4paper,12pt]{scrartcl}
+\usepackage[left= 72pt, right= 72pt, top= 72pt, bottom= 72pt]{geometry}
+% \RequirePackage[2020-02-02]{latexrelease}  % Fixes catoptions endgroup problem NOW
+% \usepackage{xkeyval}
+
+\usepackage{amsmath}
+\usepackage{amsxtra}
+
+\usepackage{latexsym,
+            wrapfig,%psfrag,
+            amssymb}
+\usepackage{bm}               % for emboldening greek letters in maths $\bm\alpha$
+                              %                                   also $\bm{\alpha\beta}$ 
+\usepackage{calrsfs}          
+                              
+\usepackage{mathrsfs}         % Change the style of cal to nicer script
+\renewcommand\cal[1]{\mathcal{#1}}
+\newcommand{\Cal}{\mathscr}   % Used for set names
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[table]{xcolor}
+
+\usepackage{longtable}
+\usepackage{threeparttable}
+% \usepackage{portland}       % to \portrait and \landscape % defunct
+\usepackage{makeidx}          % to make the index: \makeindex and \printindex
+\usepackage[square]{natbib}   % to get parentheses (...) use [round]
+%\usepackage[round]{natbib}   %    Do not simply leave out [square] or [round]
+\usepackage{hhline}           % for messing around with parts of an hline
+\usepackage{verbatim}         % for comment environment
+\usepackage{palatino,lettrine}% dropping capital 
+%------------------------------------------------------------------------------
+%    add a watermark
+%------------------------------>\usepackage[printwatermark]{xwatermark} % requires xcolor and graphicx
+%    watermark                 >\newwatermark[allpages,color=gray!20,angle=45,scale=3,xpos=0,ypos=0]{Draft}
+%\newwatermark[allpages,textalign=center,fontfamily=pbk,angle=55,scale=2.75,xpos=-1cm,ypos=1cm]{Sample Watermark}
+%------------------------------------------------------------------------------
+
+%  \Huge \huge \LARGE \Large \large \normalsize \small \footnotesize \scriptsize \tiny         
+\usepackage{listings}
+\lstset{language=python, numbers=left, numberstyle=\tiny, numbersep=5pt,
+		  basicstyle=\small\sffamily\bfseries, upquote=false, columns=fixed,			% My defaults
+%		  basicstyle=\normalsize\sffamily\bfseries,		% OR \small\sffamily,		OR \footnotesize\sffamily,
+%																		% OR \scriptsize\sffamily,	OR basicstyle=\tiny\sffamily,
+        upquote=false, columns=fullflexible, %columns=fixed,
+        backgroundcolor=\color{yellow!20},
+        keywordstyle=\bfseries\color{blue},
+%		  mathescape=true,		% This is my default, $ in a listing must be escaped
+		  mathescape=false,		% This ignores $ in a listing
+%		  escapechar={|},			% OR  % escapeinside=||,
+        morekeywords={yield,begin,end,function,procedure},
+		  literate = {-}{-}1, % Force a short hyphen for the '-' character 2025-10-31
+        tabsize=3}
+\lstdefinelanguage{Prolog}{
+	keywords=[1]{},
+	keywordstyle=\color{blue},
+}
+%       Abbreviations for various lstinline commands
+\newcommand\il[1]{% 
+\lstinline[basicstyle=\normalsize\sffamily,language={}]!#1!}
+\newcommand\ilN[1]{%    ?
+\lstinline[mathescape=False,basicstyle=\normalsize\sffamily,language={}]!#1!}
+\newcommand\ilb[1]{%
+\lstinline[basicstyle=\normalsize\sffamily\bfseries,language={}]!#1!}
+\newcommand\ilf[1]{%
+\lstinline[basicstyle=\footnotesize\sffamily,language={}]!#1!}
+\newcommand\ils[1]{%
+\lstinline[columns=fullflexible,basicstyle=\small\sffamily\bfseries,language={}]!#1!}
+\newcommand\ilt[1]{%
+\lstinline[basicstyle=\tiny\sffamily,language={}]!#1!}
+
+\usepackage{longtable}     % for tables that stretch over more than one page
+\usepackage{booktabs}      % for nice tables with \toprule, \midrule and \bottomrule
+% Use L{4em}, C{50pt}, or R{2cm}  instead of p{10ex}.  Requires array package.
+\usepackage{array}         % for newcolumntypes
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\usepackage{textcomp}      % for \texttrademark
+\def\trademark{{\hbox{\tiny TM}}}
+\usepackage{epic}          % for dotted numbering of lists
+%\usepackage{graphpap}
+
+%\usepackage{layout}
+%   ps \usepackage{pst-func}
+%   ps \usepackage{pstricks-add}
+\usepackage[pointedenum]{paralist}  
+                           % for compactenum which enables 1.1.1 numbering
+                           % by providing the compactenum environment
+% \usepackage{pstcol}
+%\usepackage{mathptmx,bm}             % make mathbf work
+%$\alpha\beta\gamma\delta\epsilon$\\
+%$\bm{\alpha\beta\gamma\delta\epsilon}$\\
+%$\bm\alpha\beta\gamma\delta\epsilon$\\
+
+
+
+%\usepackage{layout,layouts}
+\usepackage{fancyhdr}
+
+% page typesetting
+\pagestyle{fancy}
+%\addtolength{\headwidth}{\marginparsep}
+%\addtolength{\headwidth}{\marginparwidth}
+%%%
+%%%
+%%%   Only for class book and report
+%%%
+%%%
+%%%\renewcommand{\chaptermark}[1]%
+%%%	{\markboth{\thechapter\ #1}{}}
+%%%\renewcommand{\sectionmark}[1]%
+%%%%	{\markright{\thesection\ #1}}
+%%%	{\markright{#1}}
+
+\lhead[\fancyplain{}{\bfseries\thepage}]%
+	{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]%
+	{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+\newcommand\Java{\texttt{Java}} % \java 
+\newcommand\java{\texttt{Java}} % \java 
+\newcommand\python{\texttt{python}} % \java 
+\newcommand\class{\texttt{class}} % \class
+
+\newenvironment{Description}
+{\begin{list}{}{%
+   \setlength\labelwidth{0pt}%
+   \setlength\parsep{2pt}%
+  \setlength\itemindent{-0.5\leftmargin}%
+   \let\makelabel\Descriptionlabel}}%
+{\end{list}}% end of definition of Description list environment
+\newcommand*\Descriptionlabel[1]{\textbf{#1}\hfil}
+
+\newcommand{\E}{\mbox{E}}
+% \renewcommand{\cite}{\citep}
+
+\newcommand{\hash}{\mbox{hash{}}}
+
+\hyphenation{block-chain}
+\hyphenation{block-chains}
+\hyphenation{cryp-to-gra-phy}
+\newcommand\transposed{^{\!\top\!}}
+\usepackage{url}
+
+\usepackage[utf8]{inputenc}
+\DeclareGraphicsRule{.gif}{.png}{png}{%
+  \noexpand\epstopdfcall{convert #1 \noexpand\OutputFile}%
+}
+
+\usepackage[font=itshape]{quoting}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes} % or another font with italics
+\setmonofont{DejaVu Sans Mono}[
+  Scale=MatchLowercase,
+  BoldFont = *-Bold,
+  ItalicFont = *-Oblique,
+  BoldItalicFont = *-BoldOblique
+]
+\usepackage{datetime2}
+\usepackage{xspace}
+\newcommand\longdash[0]{\rule[.5ex]{1.41421em}{0.5pt}\xspace}
+%		\newcommand\Ldots[0]{\ldots\xspace}
+%     \AppendGraphicsExtensions{.gif}
+%     \DeclareGraphicsExtensions{.png,.pdf,.jpg,.jpeg,.gif}
+%
+%-------------------------------  \newcommand\colorblue[1]{\textcolor{blue}{#1}}
+\makeatletter   %  for dots in Contents
+\renewcommand\dotfill{\leavevmode\cleaders\hb@xt@.9999em{\hss.\hss}\hfill\kern\z@}
+\newcommand\filldots{\leavevmode\cleaders\hb@xt@.4999em{\hss.\hss}\hfill\kern\z@}
+\newcommand\tab{\hspace*{2em}}
+% Define the allign environment
+% -------------------\makeatletter-------------------------------------------->
+\newenvironment{allign}
+  {\vspace{-\topsep}\start@align\@ne\st@rredfalse\m@ne}
+  {\endalign\vspace{-\topsep}}
+\newenvironment{allign*}
+  {\vspace{-\topsep}\start@align\@ne\st@rredtrue\m@ne}
+  {\endalign\vspace{-\topsep}}
+%------------------------------------------------------------------------------
+\newcommand\rdtitle[1]{%\thispagestyle{empty}% Not needed
+\title{\textcolor{blue}{#1}}\author{Reg Dodds\\with the assistance of a robot}\date{\today}}
+\newcommand\titleblue[1]{%\thispagestyle{empty}% Not needed
+\title{\textcolor{blue}{#1}}\author{Reg Dodds\\with the assistance of a robot}\date{\today}}
+\newcommand\blueblue[1]{%\thispagestyle{empty}% Not needed
+\title{\textcolor{blue}{#1}}\author{Reg Dodds\\with the assistance of a robot}\date{\today}}
+\newcommand\titleBlue[3]{%\thispagestyle{empty}% Not needed
+\title{\textcolor{blue}{#1}}\author{#2}\date{#3}}
+
+%		Don't forget a \maketitle
+
+%<--------------------\makeatother---------------------------------------------
+\makeatother
+\usepackage{enumitem}
+\usepackage{relsize}        % for \mathlarger
+\usepackage{units}          % for \nicefrac
+\usepackage{xfrac}          % for \xfrac and \sfrac
+
+\usepackage{tikz}           % You need to add your own libraries
+\usetikzlibrary {arrows.meta,bending,positioning,calc,quantikz2}
+% calc                                           calc
+%    is for ($(A.east) + (0, 10pt)$) fine positioning
+\newenvironment{rdindent}
+{\par\leftskip40pt\relax\rightskip40pt\relax}
+{\par\leftskip0pt\relax\rightskip0pt\relax}
+\newcommand\m{\text{m}}
+\newcommand\s{\text{s}}
+\newcommand\kg{\text{kg}}
+
+\graphicspath{{figures/}}
+
+\newcommand\sigmoid{\text{sigmoid}}
+\newcommand\diag{\text{diag}}
+\usepackage[skip=.41\baselineskip]{parskip}
+%           \usepackage[skip=2.41\baselineskip]{parskip}
+\usepackage{problems}
+\begin{document}
